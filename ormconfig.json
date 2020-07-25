@@ -1,0 +1,24 @@
+{
+   "type": "mysql",
+   "host": "mysql669.umbler.com",
+   "port": 41890,
+   "username": "empreguete",
+   "password": "Evandro19130146",
+   "database": "empreguetes",
+   "synchronize": true,
+   "logging": false,
+   "entities": [
+      "src/entity/**/*.ts"
+   ],
+   "migrations": [
+      "src/migration/**/*.ts"
+   ],
+   "subscribers": [
+      "src/subscriber/**/*.ts"
+   ],
+   "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "src/migration",
+      "subscribersDir": "src/subscriber"
+   }
+}
