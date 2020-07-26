@@ -3,6 +3,7 @@ export default {
     secretyKey: process.env.SECRETYKEY || "0ec32048d50c0ee36d03d42b4ae63de9",    
     publicRoutes: process.env.PUBLICROUTES || [
         'users/create',
-        'users/auth'
+        'users/auth',
+        'customer/create'
     ]
 }

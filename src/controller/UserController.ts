@@ -56,7 +56,7 @@ export class UserController extends BaseController<User> {
         }
         _user.isRoot = isRoot;
 
-        return super.save(_user);
+        return super.save(_user, request, true);
     }
 
     async save(request: Request) {
@@ -65,6 +65,6 @@ export class UserController extends BaseController<User> {
         super.isRequired(_user.photo, 'O Foto do usuário é obrigatória');
         super.isRequired(_user.email, 'O Email do usuário é obrigatório');
         super.isRequired(_user.password, 'O Senha do usuário é obrigatório');
-        super.save(_user);
+        super.save(_user, request);
     }
 }

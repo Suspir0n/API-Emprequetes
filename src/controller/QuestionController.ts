@@ -19,7 +19,7 @@ export class QuestionController extends BaseController<Question> {
             super.isRequired(_question.options, 'Para o tipo selecione você deve informar quais são as opções');
         }
 
-        super.save(_question);
+        super.save(_question, request);
     }
 
 }
