@@ -12,7 +12,11 @@ export abstract class BaseController<T> extends BaseNotification{
     }
 
     async all() {
-        return this._repository.find();
+        return this._repository.find({
+            where: {
+                deleted: false
+            }
+        });
     }
 
     async one(request: Request) {
@@ -21,6 +25,11 @@ export abstract class BaseController<T> extends BaseNotification{
 
     async save(model: any) {
         if(model.uid) {
+            delete model['uid'];
+            delete model['createAt'];
+            delete model['updateAt'];
+            delete model['deleted'];
+
             let _modelInDB = await this._repository.findOne(model.uid);
             if(_modelInDB) {
                 Object.assign(_modelInDB, model);
@@ -28,7 +37,7 @@ export abstract class BaseController<T> extends BaseNotification{
         }
 
         if(this.valid()){
-            return this._repository.save(model);
+            return await this._repository.save(model);
         }else return {
             status: 400,
             errors: this.allNotifications
@@ -37,11 +46,18 @@ export abstract class BaseController<T> extends BaseNotification{
 
     async remove(request: Request) {
         let uid = request.params.id;
-        let model: any = await this._repository.find(uid);
+        let model: any = await this._repository.findOne(uid);
         if(model) {
             model.deleted = true;
+            return await this._repository.save(model);
+        }else{
+            return{
+                status: 404,
+                errors: [
+                    'Item não encontrado'
+                ]
+            }
         }
-       return await this._repository.save(model);
     }
 
     get repository(): Repository<T>{
