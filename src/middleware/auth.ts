@@ -11,7 +11,7 @@ export default async(req: Request, res: Responde, next: Function) => {
    let _userRepository:Repository<User> = getRepository(User);
    
    publicRoutes.forEach(url => {
-       let isPublic = req.url.includes(url);
+       let isPublic = req.url.includes(url) || req.url.indexOf('storage') > -1;
        if(isPublic)
           isPublicRoutes = true;
    });

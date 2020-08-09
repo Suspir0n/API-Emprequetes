@@ -6,6 +6,7 @@ import { CustomerController } from "./controller/CustomerController";
 import { ServiceProviderController } from "./controller/ServiceProviderController";
 import { RequestOrderController } from "./controller/RequestOrderController";
 import { RequestOrderAnswersController } from "./controller/RequestOrderAnswersController";
+import { StorageController } from "./controller/StorageController";
 
 export const Routes = [
     { method: "get", route: "/users", controller: UserController, action: "all" }, 
@@ -50,4 +51,7 @@ export const Routes = [
     { method: "get", route: "/requestAnswers/:orderUid/all", controller: RequestOrderAnswersController, action: "all" }, 
     { method: "post", route: "/requesAnswers", controller: RequestOrderAnswersController, action: "save" }, 
     { method: "delete", route: "/requestAnswers/:id", controller: RequestOrderAnswersController, action: "remove" },
+
+    { method: "get", route: "/storage/:filename", controller: StorageController, action: "getFile" }, 
+
 ];
