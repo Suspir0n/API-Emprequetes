@@ -1,0 +1,23 @@
+version: '3'
+services:
+
+  db:
+    image: mysql
+    container_name: empreguetesDb
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'mysql'
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - "/srv/mysql/data:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+    networks:
+      - mysql-compose-network
+
+networks:
+  mysql-compose-network:
+    driver: bridge
