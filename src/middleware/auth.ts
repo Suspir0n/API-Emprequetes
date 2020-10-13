@@ -1,8 +1,8 @@
-import { Request, Responde } from "express";
-import { verify } from 'jsonwebtoken';
-import config from '../configuration/config';
-import { getRepository, Repository } from "typeorm";
-import { User } from '../entity/User';
+import { Request, Responde } from 'express'
+import { verify } from 'jsonwebtoken'
+import config from '../configuration/config'
+import { getRepository, Repository } from 'typeorm'
+import { User } from '../entity/User'
 
 export default async(req: Request, res: Responde, next: Function) => {
    let token = req.body.token || req.query.token || req.headers['x-token-access'];

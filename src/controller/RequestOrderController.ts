@@ -1,7 +1,7 @@
-import { BaseController } from "./BaseController";
-import { Request, Responde } from 'express';
-import { RequestOrder } from "../entity/RequestOrder";
-import { RequestSatus } from "../entity/enum/RequestStatus";
+import { BaseController } from './BaseController'
+import { Request } from 'express'
+import { RequestOrder } from '../entity/RequestOrder'
+import { RequestSatus } from '../entity/enum/RequestStatus'
 
 export class RequestOrderController extends BaseController<RequestOrder> {
     

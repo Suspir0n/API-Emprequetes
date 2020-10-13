@@ -1,6 +1,6 @@
-import { BaseController } from "./BaseController";
-import { Request, Responde } from 'express';
-import { RequestOrderAnswers } from "../entity/RequestOrderAnswers";
+import { BaseController } from './BaseController'
+import { Request } from 'express'
+import { RequestOrderAnswers } from '../entity/RequestOrderAnswers'
 
 export class RequestOrderAnswersController extends BaseController<RequestOrderAnswers> {
     

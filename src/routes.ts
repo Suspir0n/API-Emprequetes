@@ -1,12 +1,12 @@
-import { UserController } from "./controller/UserController";
-import { CategoryController } from "./controller/CategoryController";
-import { SubCategoryController } from "./controller/SubCategoryController";
-import { QuestionController } from "./controller/QuestionController";
-import { CustomerController } from "./controller/CustomerController";
-import { ServiceProviderController } from "./controller/ServiceProviderController";
-import { RequestOrderController } from "./controller/RequestOrderController";
-import { RequestOrderAnswersController } from "./controller/RequestOrderAnswersController";
-import { StorageController } from "./controller/StorageController";
+import { UserController } from './controller/UserController'
+import { CategoryController } from './controller/CategoryController'
+import { SubCategoryController } from './controller/SubCategoryController'
+import { QuestionController } from './controller/QuestionController'
+import { CustomerController } from './controller/CustomerController'
+import { ServiceProviderController } from './controller/ServiceProviderController'
+import { RequestOrderController } from './controller/RequestOrderController'
+import { RequestOrderAnswersController } from './controller/RequestOrderAnswersController'
+import { StorageController } from './controller/StorageController'
 
 export const Routes = [
     { method: "get", route: "/users", controller: UserController, action: "all" }, 
@@ -53,5 +53,4 @@ export const Routes = [
     { method: "delete", route: "/requestAnswers/:id", controller: RequestOrderAnswersController, action: "remove" },
 
     { method: "get", route: "/storage/:filename", controller: StorageController, action: "getFile" }, 
-
 ];

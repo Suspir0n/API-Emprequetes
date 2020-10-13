@@ -1,9 +1,8 @@
-import { SubCategory } from "../entity/SubCategory";
-import { BaseController } from "./BaseController";
-import { Request, Responde } from 'express';
+import { SubCategory } from '../entity/SubCategory'
+import { BaseController } from './BaseController'
+import { Request } from 'express'
 
 export class SubCategoryController extends BaseController<SubCategory> {
-    
     constructor(){
         super(SubCategory);
     }
@@ -17,5 +16,4 @@ export class SubCategoryController extends BaseController<SubCategory> {
         super.isTrue(_subCategory.cost <= 0, 'O Custo deve ser maior que zero' );
         super.save(_subCategory, request);
     }
-
 }

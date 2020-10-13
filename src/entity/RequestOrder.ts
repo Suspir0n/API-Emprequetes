@@ -7,7 +7,6 @@ import { SubCategory } from "./SubCategory";
 
 @Entity({ name: 'RequestOrder' })
 export class RequestOrder extends BaseEntity {
-
     @Column({ type: 'varchar', length: 100 })
     longlat: string;
 
