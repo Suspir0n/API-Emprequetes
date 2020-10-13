@@ -1,22 +1,18 @@
-import { Customer } from "../entity/Customer";
-import { BaseController } from "./BaseController";
-import { Request, Responde } from 'express';
-import * as md5 from 'md5';
-import { FileHelper } from "../helpers/fileHelper";
+import { Customer } from '../entity/Customer'
+import { BaseController } from './BaseController'
+import { Request } from 'express'
+import * as md5 from 'md5'
+import { FileHelper } from '../helpers/fileHelper'
 
 export class CustomerController extends BaseController<Customer> {
-    
     constructor(){
         super(Customer, true);
     }
 
     async save(request: Request) {
         let _customer = <Customer>request.body;
-        super.isRequired(_customer.name, 'O Nome é obrigatório');
-        super.isRequired(_customer.photo, 'A Foto é obrigatório');
-        super.isRequired(_customer.email, 'O E-mail é obrigatório');
-        super.isRequired(_customer.phone, 'O Telefone é obrigatório');
 
+        this.checkCustomerRequestValidation(_customer)
         if(_customer.photo){
             let pictureCreateResult = await FileHelper.writePicture(_customer.photo);
             if(pictureCreateResult){
@@ -28,6 +24,12 @@ export class CustomerController extends BaseController<Customer> {
         super.save(_customer, request);
     }
 
+    checkCustomerRequestValidation(_customer: Customer) {
+        super.isRequired(_customer.name, 'O Nome é obrigatório');
+        super.isRequired(_customer.photo, 'A Foto é obrigatório');
+        super.isRequired(_customer.email, 'O E-mail é obrigatório');
+        super.isRequired(_customer.phone, 'O Telefone é obrigatório');
+    }
     async createCustomer(request: Request) {
         let _customer = <Customer>request.body;
         let { confirmPassword } = request.body;
