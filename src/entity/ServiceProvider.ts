@@ -16,7 +16,7 @@ export class ServiceProvider extends BaseEntity {
     @Column({ type: 'varchar', length: 100 })
     password: string;
 
-    @Column({ type: 'varchar', nullable: true })
+    @Column({ type: 'varchar', length: 500 ,nullable: true })
     description: string;
 
     @Column({ type: 'varchar', length: 100, nullable: true })
