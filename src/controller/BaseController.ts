@@ -1,5 +1,5 @@
 import { getRepository, Repository } from "typeorm";
-import { Request, Response } from "express";
+import { Request } from "express";
 import { BaseNotification } from "../entity/BaseNotification";
 
 export abstract class BaseController<T> extends BaseNotification{

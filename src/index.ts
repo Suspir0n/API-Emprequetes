@@ -6,7 +6,6 @@ import * as cors from 'cors';
 import {Request, Response} from "express";
 import {Routes} from "./routes";
 import config from './configuration/config';
-import auth from './middleware/auth';
 
 // create express app
 const app = express();

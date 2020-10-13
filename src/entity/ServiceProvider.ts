@@ -16,7 +16,7 @@ export class ServiceProvider extends BaseEntity {
     @Column({ type: 'varchar', length: 100 })
     password: string;
 
-    @Column({ type: 'varchar', length: 8000, nullable: true })
+    @Column({ type: 'varchar', length: 500 ,nullable: true })
     description: string;
 
     @Column({ type: 'varchar', length: 100, nullable: true })
@@ -34,10 +34,10 @@ export class ServiceProvider extends BaseEntity {
     @Column({ type: 'varchar', length: 20 })
     zipCode: string;
 
-    @Column({ type: 'varchar', length: 8000 })
+    @Column({ type: 'varchar'})
     citiesCare: string;
 
-    @Column({ type: 'varchar', length: 8000 })
+    @Column({ type: 'varchar' })
     categoriesCare: string;
 
     @Column({ type: 'varchar', length: 50 })

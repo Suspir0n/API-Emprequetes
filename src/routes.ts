@@ -48,8 +48,8 @@ export const Routes = [
     { method: "post", route: "/request", controller: RequestOrderController, action: "save" }, 
     { method: "delete", route: "/request/:id", controller: RequestOrderController, action: "remove" },
 
-    { method: "get", route: "/requestAnswers/:orderUid/all", controller: RequestOrderAnswersController, action: "all" }, 
-    { method: "post", route: "/requesAnswers", controller: RequestOrderAnswersController, action: "save" }, 
+    { method: "post", route: "/requestAnswers", controller: RequestOrderAnswersController, action: "save" },
+    { method: "get", route: "/requestAnswers/:orderUid/all", controller: RequestOrderAnswersController, action: "all" },
     { method: "delete", route: "/requestAnswers/:id", controller: RequestOrderAnswersController, action: "remove" },
 
     { method: "get", route: "/storage/:filename", controller: StorageController, action: "getFile" }, 
