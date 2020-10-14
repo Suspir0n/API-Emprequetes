@@ -9,6 +9,7 @@ export class CategoryController extends BaseController<Category> {
 
     async save (request: Request) {
         let _category = <Category>request.body
+
         super.isRequired(_category.name, 'O Nome da categoria é obrigatório')
         super.save(_category, request)
     }

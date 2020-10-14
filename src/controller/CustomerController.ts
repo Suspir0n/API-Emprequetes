@@ -15,6 +15,7 @@ export class CustomerController extends BaseController<Customer> {
         this.checkCustomerRequestValidation(_customer)
         if(_customer.photo){
             let pictureCreateResult = await FileHelper.writePicture(_customer.photo);
+
             if(pictureCreateResult){
                 _customer.photo = pictureCreateResult;
             }
@@ -44,15 +45,10 @@ export class CustomerController extends BaseController<Customer> {
         
         if(_customer.photo){
             let pictureCreateResult = await FileHelper.writePicture(_customer.photo);
-            if(pictureCreateResult){
-                _customer.photo = pictureCreateResult;
-            }
-        }
 
-        if(_customer.password){
-            _customer.password = md5(_customer.password);
+            if(pictureCreateResult) _customer.photo = pictureCreateResult;
         }
-
+        if(_customer.password) _customer.password = md5(_customer.password);
         super.save(_customer, request, true);
     }
 
