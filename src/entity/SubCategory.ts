@@ -1,6 +1,6 @@
-import { BaseEntity } from "./BaseEntity"
-import { Entity, Column, ManyToMany, ManyToOne } from "typeorm";
-import { Category } from "./Category";
+import { BaseEntity } from './BaseEntity'
+import { Column, Entity, ManyToOne } from 'typeorm'
+import { Category } from './Category'
 
 @Entity({name: 'SubCategory'})
 export class SubCategory extends BaseEntity {

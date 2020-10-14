@@ -1,12 +1,11 @@
-import { Request, Responde } from 'express';
-import {User} from "../entity/User";
-import { BaseController } from "./BaseController";
-import * as md5 from 'md5';
-import { sign } from 'jsonwebtoken';
-import config from '../configuration/config';
+import { Request, Responde } from 'express'
+import { User } from '../entity/User'
+import { BaseController } from './BaseController'
+import * as md5 from 'md5'
+import { sign } from 'jsonwebtoken'
+import config from '../configuration/config'
 
 export class UserController extends BaseController<User> {
-    
     constructor(){
         super(User);
     }

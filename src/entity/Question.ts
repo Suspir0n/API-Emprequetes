@@ -5,7 +5,6 @@ import { SubCategory } from "./SubCategory";
 
 @Entity({name: 'Question'})
 export class Question extends BaseEntity {
-   
     @Column({ type: 'varchar', length: 200 })
     question: string;
 

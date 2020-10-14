@@ -1,28 +1,28 @@
-import { getRepository, Repository } from "typeorm";
-import { Request } from "express";
-import { BaseNotification } from "../entity/BaseNotification";
+import { getRepository, Repository } from 'typeorm'
+import { Request } from 'express'
+import { BaseNotification } from '../entity/BaseNotification'
+import IRequestResponse from '../interfaces/IRequestResponse'
 
-export abstract class BaseController<T> extends BaseNotification{
-
-    private _repository: Repository<T>;
-    private _onlyRootController: Boolean = false;
-    public errorRoot: any = {
+export abstract class BaseController<T> extends BaseNotification {
+    private _repository: Repository<T>
+    private _onlyRootController: Boolean = false
+    public errorRoot: IRequestResponse = {
         status: 401,
         errors: ['Você não está autorizado a executar essa funcionalidade']
-    };
-
-    constructor(entity: any, onlyRoot: Boolean = false){
-        super();
-        this._repository = getRepository<T>(entity);
-        this._onlyRootController = onlyRoot;
     }
 
-    public checkNotPermission(request: Request){
-        return (this._onlyRootController && !request.isRoot);
+    constructor (entity: any, onlyRoot: Boolean = false) {
+        super()
+        this._repository = getRepository<T>(entity)
+        this._onlyRootController = onlyRoot
     }
 
-    async all(request: Request) {
-        if(this.checkNotPermission(request)) return this.errorRoot;
+    public isNotPermission (request: Request): boolean {
+        return (this._onlyRootController && !request.isRoot)
+    }
+
+    async all (request: Request) {
+        if (this.isNotPermission(request)) return this.errorRoot
         return this._repository.find({
             where: {
                 deleted: false
@@ -31,13 +31,13 @@ export abstract class BaseController<T> extends BaseNotification{
     }
 
     async one(request: Request) {
-        if(this.checkNotPermission(request)) return this.errorRoot;
+        if (this.isNotPermission(request)) return this.errorRoot
         return this._repository.findOne(request.params.id);
     }
 
     async save(model: any, request: Request, ignorePermissions: boolean = false) {
         if(!ignorePermissions){
-            if(this.checkNotPermission(request)) return this.errorRoot;
+            if (this.isNotPermission(request)) return this.errorRoot
         }
         if(model.uid) {
             delete model['createAt'];
@@ -59,9 +59,10 @@ export abstract class BaseController<T> extends BaseNotification{
     }
 
     async remove(request: Request) {
-        if(this.checkNotPermission(request)) return this.errorRoot;
+        if (this.isNotPermission(request)) return this.errorRoot
         let uid = request.params.id;
         let model: any = await this._repository.findOne(uid);
+
         if(model) {
             model.deleted = true;
             return await this._repository.save(model);

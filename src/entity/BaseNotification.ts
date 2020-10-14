@@ -1,5 +1,5 @@
 export abstract class BaseNotification{
-    notifications: Array<{ message: string }>;
+  notifications: Array<{ message: string }>;
 
   constructor() {
     this.notifications = new Array<{ message: string }>();
@@ -47,5 +47,4 @@ export abstract class BaseNotification{
   valid(): boolean {
     return this.notifications.length == 0;
   }
-
 }

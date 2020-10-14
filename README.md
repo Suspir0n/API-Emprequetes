@@ -6,4 +6,3 @@ Steps to run this project:
 2. Setup database settings inside `ormconfig.json` file
 3. Run `docker-compose up`
 3. Run `npm start` command
-

@@ -1,8 +1,8 @@
-import { ServiceProvider } from "../entity/ServiceProvider";
-import { BaseController } from "./BaseController";
-import { Request, Responde } from 'express';
-import * as md5 from 'md5';
-import { FileHelper } from "../helpers/fileHelper";
+import { ServiceProvider } from '../entity/ServiceProvider'
+import { BaseController } from './BaseController'
+import { Request } from 'express'
+import * as md5 from 'md5'
+import { FileHelper } from '../helpers/fileHelper'
 
 export class ServiceProviderController extends BaseController<ServiceProvider> {
     
